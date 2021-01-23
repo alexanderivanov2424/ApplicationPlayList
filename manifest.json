@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+	"manifest_version": 2,
 
 	"name": "Application Playlist",
 	"description": "Quick and easy way to manage and grind through your applications",
@@ -12,9 +12,9 @@
 
 	"permissions": [
 		"activeTab",
-    "tabs",
-    "storage",
-    "notifications",
-    "<all_urls>"
+		"tabs",
+		"storage",
+		"notifications",
+		"<all_urls>"
 	]
 }

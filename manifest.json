@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
 
-	"name": "Deep Scroll",
-	"description": "This extension will use state of the art AI models to revolutionize how you scroll",
-	"version": "6.0",
+	"name": "Application Playlist",
+	"description": "Quick and easy way to manage and grind through your applications",
+	"version": "1.0",
 
 	"browser_action": {
 		"default_icon": "icon.png",
@@ -12,6 +12,9 @@
 
 	"permissions": [
 		"activeTab",
-        "tabs"
-	] 
+    "tabs",
+    "storage",
+    "notifications",
+    "<all_urls>"
+	]
 }

@@ -1,0 +1,13 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var checkPageButton = document.getElementById('checkPage');
+    checkPageButton.addEventListener('click', function() {
+        function changeColor(){
+            document.body.style.backgroundColor = "green";
+            window.scrollBy(0, 100);
+        }
+
+        chrome.tabs.executeScript({code: '(' + changeColor + ')();'}, function(result){
+            console.log(result);
+        })
+        });
+});

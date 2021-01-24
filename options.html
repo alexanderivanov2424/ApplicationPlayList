@@ -1,180 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Application Playlist Options</title>
-        <script type="module" src="optionHandling.js"></script>
-
-        <link rel="stylesheet" href="options.css">
-    </head>
-    <body>
-      <!--Some HTML taken from https://colorlib.com -->
-      <div class="main">
-          <div class="container">
-              <div class="signup-content">
-                  <div class="signup-form">
-                      <form method="POST" class="register-form" id="options-form">
-                          <h2>Auto Fill Options</h2>
-                          <div class="form-row">
-                              <div class="form-group">
-                                  <label for="fname">First Name :</label>
-                                  <input type="text" name="fname" id="fname"/>
-                              </div>
-                              <div class="form-group">
-                                  <label for="lname">Last Name :</label>
-                                  <input type="text" name="lname" id="lname"/>
-                              </div>
-                          </div>
-                          <div class="form-radio">
-                              <label for="gender" class="radio-label">Gender :</label>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="male" name="gender" id="male" />
-                                  <label for="male">Male</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="female" name="gender" id="female" />
-                                  <label for="female">Female</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="non-binary" name="gender" id="non-binary" />
-                                  <label for="non-binary">Non-Binary</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="other" name="gender" id="other" />
-                                  <label for="other">Other</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="no-say" name="gender" id="no-say" />
-                                  <label for="no-say">Don't wish to answer</label>
-                                  <span class="check"></span>
-                              </div>
-                          </div>
-                          <div class="form-radio">
-                              <label for="race" class="radio-label">Race :</label>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="asian" name="race" id="asian" />
-                                  <label for="asian">Asian</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="black" name="race" id="black" />
-                                  <label for="black">Black or African American</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="latinx" name="race" id="latinx" />
-                                  <label for="latinx">Latinx or Hispanic</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="native" name="race" id="native" />
-                                  <label for="native">Native American or Alaska Native</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="islander" name="race" id="islander" />
-                                  <label for="islander">Native Hawaiian or Pacific Islander</label>
-                                  <span class="check"></span>
-                              </div>
-                              <div class="form-radio-item">
-                                  <input type="radio" value="white" name="race" id="white" />
-                                  <label for="white">White</label>
-                                  <span class="check"></span>
-                              </div>
-                              <!-- <div class="form-radio-item"> -->
-                              <!--     <input type="radio" value="no-say" name="race" id="no-say" /> -->
-                              <!--     <label for="no-say">Don't wish to answer</label> -->
-                              <!--     <span class="check"></span> -->
-                              <!-- </div> -->
-                          </div>
-                          <div class="form-group">
-                              <label for="self-desc">Self Describe :</label>
-                              <input type="text" name="self-desc" id="self-desc"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="pronouns">Pronouns :</label>
-                              <input type="text" name="pronouns" id="pronouns"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="email">Email :</label>
-                              <input type="text" name="email" id="email"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="website">Website:</label>
-                              <input type="text" name="website" id="website" />
-                          </div>
-                          <div class="form-group">
-                              <label for="linkedin">Linkedin:</label>
-                              <input type="text" name="linkedin" id="linkedin" />
-                          </div>
-                          <div class="form-group">
-                              <label for="phone-num">Phone Number :</label>
-                              <input type="text" name="phone-num" id="phone-num"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="address">Address :</label>
-                              <input type="text" name="address" id="address"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="zipcode">Zip Code :</label>
-                              <input type="text" name="zipcode" id="zipcode">
-                          </div>
-                          <div class="form-row">
-                              <div class="form-group">
-                                  <label for="country">Country :</label>
-                                  <input type="text" name="country" id="country"/>
-                              </div>
-                              <div class="form-group">
-                                  <label for="state">State :</label>
-                                  <input type="text" name="state" id="state"/>
-                              </div>
-                              <div class="form-group">
-                                  <label for="city">City :</label>
-                                  <input type="text" name="city" id="city"/>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="birth-date">DOB :</label>
-                              <input type="text" name="birth-date" id="birth-date">
-                          </div>
-                          <div class="form-group">
-                              <label for="hear-about">Hear About Job Default :</label>
-                              <input type="text" name="hear-about" id="hear-about"/>
-                          </div>
-                          <div class="form-group">
-                              <label for="education">Education :</label>
-                              <input type="text" name="education" id="education"/>
-                          </div>
-
-                          <div class="form-group">
-                              <label for="major">Major :</label>
-                              <div class="form-select">
-                                  <select name="major" id="major">
-                                      <option value=""></option>
-                                      <option value="computer">Computer Operator & Pragramming Assistant</option>
-                                      <option value="desiger">Designer</option>
-                                      <option value="marketing">Marketing</option>
-                                  </select>
-                                  <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="form-save">
-                                  <input type="submit" value="Save" class="save" name="save-options" id="save-options" />
-                              </div>
-                              <div style="width:50px;">
-                              </div>
-                              <div class="form-save">
-                                  <input type="submit" value="Reset" class="save" name="clear" id="clear" />
-                              </div>
-                          </div>
-                      </form>
-                  </div>
+  <head>
+    <title>Application Playlist Options</title>
+    <script type="module" src="optionHandling.js"></script>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <!--Some HTML taken from https://colorlib.com -->
+    <div class="main">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+            <form method="POST" class="register-form" id="options-form">
+              <h2>Auto Fill Options</h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name:
+                    <input type="text" name="fname" />
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Last Name:
+                    <input type="text" name="lname" />
+                  </label>
+                </div>
               </div>
+              <div class="form-radio">
+                <label class="radio-group-label">Gender:</label>
+                <ul>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="none" name="gender" checked />
+                      None
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="male" name="gender" />
+                      Male
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="female" name="gender" />
+                      Female
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="non-binary" name="gender" />
+                      Non-Binary
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="other" name="gender" />
+                      Other
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="no-say" name="gender" />
+                      Don't wish to answer
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="form-radio">
+                <label class="radio-group-label">Race:</label>
+                <ul>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="none" name="race" checked />
+                      None
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="asian" name="race" />
+                      Asian
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="black" name="race" />
+                      Black or African American
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="latinx" name="race" />
+                      Latinx or Hispanic
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="native" name="race" />
+                      Native American or Alaska Native
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="islander" name="race" />
+                      Native Hawaiian or Pacific Islander
+                    </label>
+                  </li>
+                  <li class="form-radio-item">
+                    <label>
+                      <input type="radio" value="white" name="race" />
+                      White
+                    </label>
+                  </li>
+                  <!-- <li class="form-radio-item"> -->
+                  <!--   <label> -->
+                  <!--     <input type="radio" value="no-say" name="race" /> -->
+                  <!--     Don't wish to answer -->
+                  <!--   </label> -->
+                  <!-- </li> -->
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>Self Describe:
+                  <input type="text" name="self-desc" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Pronouns:
+                  <input type="text" name="pronouns" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Email:
+                  <input type="text" name="email" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Website:
+                  <input type="text" name="website" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Linkedin:
+                  <input type="text" name="linkedin" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Phone Number:
+                  <input type="text" name="phone-num" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Address:
+                  <input type="text" name="address" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Zip Code:
+                  <input type="text" name="zipcode" />
+                </label>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Country:
+                    <input type="text" name="country" />
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>State:
+                    <input type="text" name="state" />
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>City:
+                    <input type="text" name="city" />
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>DOB:
+                  <input type="text" name="birth-date" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Hear About Job Default:
+                  <input type="text" name="hear-about" />
+                </label>
+              </div>
+              <div class="form-group">
+                <label>Education:
+                  <input type="text" name="education" />
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>Major:
+                  <div class="form-select">
+                    <select name="major">
+                      <option value="none"></option>
+                      <option value="computer">Computer Operator &amp; Programming Assistant</option>
+                      <option value="desiger">Designer</option>
+                      <option value="marketing">Marketing</option>
+                    </select>
+                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                  </div>
+                </label>
+              </div>
+              <div class="form-row">
+                <div class="form-save">
+                  <input type="submit" value="Save" class="save" id="save-options" />
+                </div>
+                <div style="width:50px;">
+                </div>
+                <div class="form-save">
+                  <input type="submit" value="Reset" class="save" id="clear" />
+                </div>
+              </div>
+            </form>
           </div>
+        </div>
       </div>
-    </body>
+    </div>
+  </body>
 </html>

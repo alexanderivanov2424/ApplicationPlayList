@@ -12,7 +12,7 @@
           <div class="container">
               <div class="signup-content">
                   <div class="signup-form">
-                      <form method="POST" class="register-form" id="register-form">
+                      <form method="POST" class="register-form" id="options-form">
                           <h2>Auto Fill Options</h2>
                           <div class="form-row">
                               <div class="form-group">
@@ -24,30 +24,30 @@
                                   <input type="text" name="lname" id="lname"/>
                               </div>
                           </div>
-                          <div class="form-radio">
+                          <div class="form-radio" id="gender">
                               <label for="gender" class="radio-label">Gender :</label>
                               <div class="form-radio-item">
-                                  <input type="radio" name="gender" id="male" checked>
+                                  <input type="radio" value="male" name="gender" id="male">
                                   <label for="male">Male</label>
                                   <span class="check"></span>
                               </div>
                               <div class="form-radio-item">
-                                  <input type="radio" name="gender" id="female">
+                                  <input type="radio" value="female" name="gender" id="female">
                                   <label for="female">Female</label>
                                   <span class="check"></span>
                               </div>
                               <div class="form-radio-item">
-                                  <input type="radio" name="gender" id="non-binary">
+                                  <input type="radio" value="non-binary" name="gender" id="non-binary">
                                   <label for="non-binary">Non-Binary</label>
                                   <span class="check"></span>
                               </div>
                               <div class="form-radio-item">
-                                  <input type="radio" name="gender" id="other">
+                                  <input type="radio" value="other" name="gender" id="other">
                                   <label for="other">Other</label>
                                   <span class="check"></span>
                               </div>
                               <div class="form-radio-item">
-                                  <input type="radio" name="gender" id="no-say">
+                                  <input type="radio" value="no-say" name="gender" id="no-say">
                                   <label for="no-say">Don't wish to answer</label>
                                   <span class="check"></span>
                               </div>
@@ -62,7 +62,7 @@
                           </div>
                           <div class="form-group">
                               <label for="email">Email :</label>
-                              <input type="email" name="email" id="email"/>
+                              <input type="text" name="email" id="email"/>
                           </div>
                           <div class="form-group">
                               <label for="website">Website:</label>
@@ -125,12 +125,12 @@
                           </div>
                           <div class="form-row">
                               <div class="form-save">
-                                  <input type="submit" value="Save" class="save" name="save" id="save-options" />
+                                  <input type="submit" value="Save" class="save" name="save-options" id="save-options" />
                               </div>
                               <div style="width:50px;">
                               </div>
                               <div class="form-save">
-                                  <input type="submit" value="Reset" class="save" name="save" id="clear" />
+                                  <input type="submit" value="Reset" class="save" name="clear" id="clear" />
                               </div>
                           </div>
                       </form>

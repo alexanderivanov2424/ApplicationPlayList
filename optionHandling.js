@@ -1,6 +1,8 @@
 import { set, get } from "./utils.js";
 
-const FIELDS = ["fname","lname"];
+const FIELDS = ["fname","lname", "email", "website", "linkedin",
+  "phone-num", "address", "zipcode", "country", "state", "birth-date",
+  "education", "major"];
 
 async function saveOptions() {
   const options = {};

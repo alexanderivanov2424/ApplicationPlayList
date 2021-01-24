@@ -3,14 +3,111 @@
     <head>
         <title>Application Playlist Options</title>
         <script type="module" src="optionHandling.js"></script>
+
+        <link rel="stylesheet" href="options.css">
     </head>
     <body>
-      <form id="option-form">
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br><br>
-      </form>
-      <button id="save-options">Submit</button>
+      <!--CSS taken from https://uicookies.com/beautiful-css-forms/  Reg Form v15 -->
+      <div class="main">
+          <div class="container">
+              <div class="signup-content">
+                  <div class="signup-form">
+                      <form method="POST" class="register-form" id="register-form">
+                          <h2>Auto Fill Options</h2>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="fname">First Name :</label>
+                                  <input type="text" name="fname" id="fname"/>
+                              </div>
+                              <div class="form-group">
+                                  <label for="lname">Last Name :</label>
+                                  <input type="text" name="lname" id="lname"/>
+                              </div>
+                          </div>
+                          <div class="form-radio">
+                              <label for="gender" class="radio-label">Gender :</label>
+                              <div class="form-radio-item">
+                                  <input type="radio" name="gender" id="male" checked>
+                                  <label for="male">Male</label>
+                                  <span class="check"></span>
+                              </div>
+                              <div class="form-radio-item">
+                                  <input type="radio" name="gender" id="female">
+                                  <label for="female">Female</label>
+                                  <span class="check"></span>
+                              </div>
+                              <div class="form-radio-item">
+                                  <input type="radio" name="gender" id="other">
+                                  <label for="other">Other</label>
+                                  <span class="check"></span>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="email">Email :</label>
+                              <input type="text" name="email" id="email"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="website">Website:</label>
+                              <input type="email" name="website" id="website" />
+                          </div>
+                          <div class="form-group">
+                              <label for="linkedin">Linkedin:</label>
+                              <input type="email" name="linkedin" id="linkedin" />
+                          </div>
+                          <div class="form-group">
+                              <label for="phone-num">Phone Number :</label>
+                              <input type="text" name="phone-num" id="phone-num"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="address">Address :</label>
+                              <input type="text" name="address" id="address"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="zipcode">Zip Code :</label>
+                              <input type="text" name="zipcode" id="zipcode">
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="country">Country :</label>
+                                  <input type="text" name="country" id="country"/>
+                              </div>
+                              <div class="form-group">
+                                  <label for="state">State :</label>
+                                  <input type="text" name="state" id="state"/>
+                              </div>
+                              <div class="form-group">
+                                  <label for="city">City :</label>
+                                  <input type="text" name="city" id="city"/>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="birth-date">DOB :</label>
+                              <input type="text" name="birth-date" id="birth-date">
+                          </div>
+                          <div class="form-group">
+                              <label for="education">Education :</label>
+                              <input type="text" name="education" id="education"/>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="major">Major :</label>
+                              <div class="form-select">
+                                  <select name="major" id="major">
+                                      <option value=""></option>
+                                      <option value="computer">Computer Operator & Pragramming Assistant</option>
+                                      <option value="desiger">Designer</option>
+                                      <option value="marketing">Marketing</option>
+                                  </select>
+                                  <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                              </div>
+                          </div>
+                          <div class="form-save">
+                              <input type="submit" value="Save" class="save" name="save" id="save-options" />
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
     </body>
 </html>

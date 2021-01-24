@@ -2,21 +2,26 @@ function get(keys) {
   return new Promise(resolve => chrome.storage.local.get(keys, resolve));
 }
 
-async function getOptions() {
-  const { options } = await get('options');
-  return options;
-}
+function autofillForms(options) {
+  const {
+    fname,
+    lname,
+    email,
+    website,
+    linkedin,
+    'phone-num': phoneNum,
+    zipcode,
+    address,
+    country,
+    state,
+    city,
+    education,
+    'hear-about': hearAbout,
+    pronouns,
+    gender,
+    race,
+  } = options;
 
-function fillElementsWith(items) {
-  for (const [id, value] of Object.entries(items)) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.value = value;
-    }
-  }
-}
-
-function autofillForms(options, gender, race) {
   for (const form of document.forms) {
     for (const input of form.elements) {
       const labels = input.labels;
@@ -24,37 +29,37 @@ function autofillForms(options, gender, race) {
         for (const label of labels) {
           const text = label.innerText;
           if (text.match(/first name/i)) {
-            input.value = options['fname'];
+            input.value = fname;
           } else if (text.match(/last name/i)) {
-            input.value = options['lname'];
+            input.value = lname;
           } else if (text.match(/full name/i)) {
-            input.value = options['fname'] + ' ' + options['lname'];
+            input.value = fname + ' ' + lname;
           } else if (text.match(/email/i)) {
-            input.value = options['email'];
+            input.value = email;
           } else if (text.match(/website/i)) {
-            input.value = options['website'];
+            input.value = website;
           } else if (text.match(/linkedin/i)) {
-            input.value = options['linkedin'];
+            input.value = linkedin;
           } else if (text.match(/phone/i)) {
-            input.value = options['phone-num'];
+            input.value = phoneNum;
           } else if (text.match(/zipcode/i)) {
-            input.value = options['zipcode'];
+            input.value = zipcode;
           } else if (text.match(/address/i)) {
-            input.value = options['address'];
+            input.value = address;
           } else if (text.match(/country/i)) {
-            input.value = options['country'];
+            input.value = country;
           } else if (text.match(/state/i)) {
-            input.value = options['state'];
+            input.value = state;
           } else if (text.match(/city/i)) {
-            input.value = options['city'];
+            input.value = city;
           } else if (text.match(/university/i)) {
-            input.value = options['education'];
+            input.value = education;
           } else if (text.match(/education/i)) {
-            input.value = options['education'];
+            input.value = education;
           } else if (text.match(/this job/i)) {
-            input.value = options['hear-about'];
+            input.value = hearAbout;
           } else if (text.match(/pronouns/i)) {
-            input.value = options['pronouns'];
+            input.value = pronouns;
           } else if (gender === 'male' && text.match(/\b(male|man)/i)) {
             input.checked = true;
           } else if (gender === 'female' && text.match(/female|woman/i)) {
@@ -72,8 +77,7 @@ function autofillForms(options, gender, race) {
 
 chrome.runtime.onMessage.addListener(async request => {
   if (request === 'autofill') {
-    const options = await getOptions();
-    const { gender, race } = await get(['gender', 'race']);
-    autofillForms(options, gender, race);
+    const { options } = await get('options');
+    autofillForms(options);
   }
 });

@@ -1,5 +1,4 @@
-import { set, get, query, update, clear } from "./utils.js";
-
+import { set, get, query, update } from "./utils.js";
 
 // Functions related to apps
 export async function getAllApps() {
@@ -8,7 +7,7 @@ export async function getAllApps() {
 }
 
 export async function appendApp() {
-  const [tab] = await query({active: true, currentWindow: true});
+  const [tab] = await query({ active: true, currentWindow: true });
   const site = [tab.url, tab.title];
 
   const { apps = [] } = await get(['apps']);
@@ -74,21 +73,21 @@ chrome.storage.onChanged.addListener(async changes => {
     renderAppList(apps, changes['currIdx'].newValue);
   }
 
-  if ('apps' in changes){
+  if ('apps' in changes) {
     renderAppList(changes['apps'].newValue, currIdx);
   }
 });
 
 function renderAppList(appSites, currIdx) {
-	const appList = document.getElementById('app-list');
-	while (appList.firstChild) {
-	  appList.removeChild(appList.lastChild);
-	}
+  const appList = document.getElementById('app-list');
+  while (appList.firstChild) {
+    appList.removeChild(appList.lastChild);
+  }
 
-	for (let i=0; i < appSites.length; i++) {
-	  const appItem = document.createElement('li');
+  for (let i = 0; i < appSites.length; i++) {
+    const appItem = document.createElement('li');
     appItem.className = "app-list-element";
-	  appItem.innerHTML = appSites[i][1];
+    appItem.innerHTML = appSites[i][1];
     appItem.addEventListener('click', async () => {
       await set({ currIdx: i });
       await loadApp(i);
@@ -96,8 +95,8 @@ function renderAppList(appSites, currIdx) {
     if (i == currIdx) {
       appItem.classList.add("highlight");
     }
-	  appList.appendChild(appItem);
-	}
+    appList.appendChild(appItem);
+  }
 }
 
 async function sendAutofillMessage() {
@@ -105,24 +104,17 @@ async function sendAutofillMessage() {
   chrome.tabs.sendMessage(tab.id, 'autofill');
 }
 
+async function removeCurrentApp() {
+  let { currIdx } = await get(['currIdx']);
+  const { apps = [] } = await get(['apps']);
+  apps.splice(currIdx, 1);
+  await set({ apps });
 
-async function removeCurrentApp(){
-    let { currIdx } = await get(['currIdx']);
-    const { apps = [] } = await get(['apps']);
-    apps.splice(currIdx,1);
-    await set({ apps });
+  const currLength = (await getAllApps()).length;
+  currIdx = currIdx >= currLength ? currLength - 1 : currIdx;
+  await set({ currIdx });
 
-    const currLength = (await getAllApps()).length;
-    currIdx = currIdx >= currLength ? currLength - 1 : currIdx;
-    await set({ currIdx });
-
-    await loadApp(currIdx);
-}
-
-
-async function scrollAppList(){
-    const appList = document.getElementById('autofill')
-    console.log(appList.scrollTop)
+  await loadApp(currIdx);
 }
 
 async function togglePlayPause() {
@@ -145,15 +137,12 @@ async function togglePlayPause() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  //document.getElementById('clear').addEventListener('click', clear);
   document.getElementById('save').addEventListener('click', appendApp);
   document.getElementById('start').addEventListener('click', togglePlayPause);
   document.getElementById('previous').addEventListener('click', prevApp);
   document.getElementById('next').addEventListener('click', nextApp);
   document.getElementById('autofill').addEventListener('click', sendAutofillMessage);
   document.getElementById('done').addEventListener('click', removeCurrentApp);
-
-  // document.getElementById('app-list').addEventListener("scroll", scrollAppList);
 
   const { apps = [], currIdx } = await get(['apps', 'currIdx']);
   renderAppList(apps, currIdx);

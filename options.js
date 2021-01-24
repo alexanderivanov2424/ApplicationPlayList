@@ -17,7 +17,7 @@ export async function getOptions() {
 }
 
 function getInput(key, value) {
-  return document.querySelector(`[name=${key}][value=${value || 'none'}]`) || document.querySelector(`[name=${key}]`);
+  return document.querySelector(`[name="${key}"][value="${value || 'none'}"]`) || document.querySelector(`[name="${key}"]`);
 }
 
 async function loadOptions() {

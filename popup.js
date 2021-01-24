@@ -63,10 +63,6 @@ export async function nextApp() {
   await loadApp(currIdx);
 }
 
-export async function removeApp(){
-  
-}
-
 export async function start() {
   //await loadApp(0);
 }
@@ -91,6 +87,7 @@ function renderAppList(appSites, currIdx) {
 
 	for (let i=0; i < appSites.length; i++) {
 	  const appItem = document.createElement('li');
+    appItem.className = "app-list-element";
 	  appItem.innerHTML = appSites[i][1];
     appItem.addEventListener('click', async () => {
       await set({ currIdx: i });
@@ -108,6 +105,16 @@ async function sendAutofillMessage() {
   chrome.tabs.sendMessage(tab.id, 'autofill');
 }
 
+
+async function removeCurrentApp(){
+
+}
+
+
+async function scrollAppList(){
+
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   //document.getElementById('clear').addEventListener('click', clear);
   document.getElementById('save').addEventListener('click', appendApp);
@@ -115,6 +122,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('previous').addEventListener('click', prevApp);
   document.getElementById('next').addEventListener('click', nextApp);
   document.getElementById('autofill').addEventListener('click', sendAutofillMessage);
+  document.getElementById('done').addEventListener('click', removeCurrentApp);
+
+  document.getElementById('autofill').addEventListener("scroll", scrollAppList);
 
   const { apps = [], currIdx } = await get(['apps', 'currIdx']);
   renderAppList(apps, currIdx);

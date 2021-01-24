@@ -128,7 +128,16 @@ body {
 }
 
 .blue {
-  background-color: dodgerblue;
+  background-color: #1d88f2;
+  box-shadow: 0 3px 0 #1872cc;
+}
+
+.blue:hover {
+  background: #1f8fff;
+}
+
+.blue:active, .btn:focus {
+  background: #1a79d9;
 }
 
 .start {

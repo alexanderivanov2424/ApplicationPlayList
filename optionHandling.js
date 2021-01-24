@@ -1,4 +1,4 @@
-import { set, get } from "./utils.js";
+import { set, get, clear } from "./utils.js";
 
 const FIELDS = ["fname","lname", "email", "website", "linkedin",
   "phone-num", "address", "zipcode", "country", "state", "birth-date",
@@ -28,6 +28,7 @@ async function loadOptions() {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('save-options').addEventListener('click', saveOptions);
+  document.getElementById('clear').addEventListener('click', clear);
 });
 
 window.onload = loadOptions;

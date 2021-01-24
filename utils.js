@@ -13,3 +13,7 @@ export function query(queryInfo) {
 export function update(updateProperties) {
   return new Promise(resolve => chrome.tabs.update(updateProperties, resolve));
 }
+
+export async function clear() {
+  await set({ currIdx: -1, apps: [] });
+}

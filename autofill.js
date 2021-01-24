@@ -16,7 +16,7 @@ function fillElementsWith(items) {
   }
 }
 
-function autofillForms(options) {
+function autofillForms(options, gender, race) {
   for (const form of document.forms) {
     for (const input of form.elements) {
       const labels = input.labels;
@@ -55,6 +55,14 @@ function autofillForms(options) {
             input.value = options['hear-about'];
           } else if (text.match(/pronouns/i)) {
             input.value = options['pronouns'];
+          } else if (gender === 'male' && text.match(/male|man/i)) {
+            input.checked = true;
+          } else if (gender === 'female' && text.match(/female|woman/i)) {
+            input.checked = true;
+          } else if (gender === 'non-binary' && text.match(/non(-| )?binary/i)) {
+            input.checked = true;
+          } else if (race === 'white' && text.match(/white/i)) {
+            input.checked = true;
           }
         }
       }
@@ -65,6 +73,7 @@ function autofillForms(options) {
 chrome.runtime.onMessage.addListener(async request => {
   if (request === 'autofill') {
     const options = await getOptions();
-    autofillForms(options);
+    const { gender, race } = await get(['gender', 'race']);
+    autofillForms(options, gender, race);
   }
 });

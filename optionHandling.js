@@ -18,6 +18,7 @@ async function saveOptions() {
   const options = formOptions();
   await set({ options });
   await saveRadio('gender');
+  await saveRadio('race');
 }
 
 export async function getOptions() {
@@ -35,6 +36,7 @@ async function loadOptions() {
     }
   }
   await loadRadio('gender');
+  await loadRadio('race');
 }
 
 async function saveRadio(key) {

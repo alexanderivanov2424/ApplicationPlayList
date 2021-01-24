@@ -115,10 +115,29 @@ async function scrollAppList(){
 
 }
 
+async function togglePlayPause() {
+  let { isApplying = false } = await get('isApplying');
+  isApplying = !isApplying;
+  const playPause = document.getElementById('start');
+  if (isApplying) {
+    const [tab] = await query({ active: true, currentWindow: true });
+    await set({ priorPage: tab.url });
+    playPause.src = 'media/pause.svg';
+    playPause.style.left = '0px';
+    await loadCurrApp();
+  } else {
+    playPause.src = 'media/start.svg';
+    playPause.style.left = '3px';
+    const { priorPage } = await get('priorPage');
+    await update({ url: priorPage });
+  }
+  await set({ isApplying });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   //document.getElementById('clear').addEventListener('click', clear);
   document.getElementById('save').addEventListener('click', appendApp);
-  document.getElementById('start').addEventListener('click', loadCurrApp);
+  document.getElementById('start').addEventListener('click', togglePlayPause);
   document.getElementById('previous').addEventListener('click', prevApp);
   document.getElementById('next').addEventListener('click', nextApp);
   document.getElementById('autofill').addEventListener('click', sendAutofillMessage);
@@ -128,4 +147,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const { apps = [], currIdx } = await get(['apps', 'currIdx']);
   renderAppList(apps, currIdx);
+  const { isApplying = false } = await get('isApplying');
+  const playPause = document.getElementById('start');
+  playPause.src = isApplying ? 'media/pause.svg' : 'media/start.svg';
+  playPause.style.left = isApplying ? '0px' : '3px';
 });

@@ -5,8 +5,8 @@
 }
 
 body {
-  width: 400px;
-  height: 350px;
+  width: 450px;
+  height: 400px;
   background-color: #ffffff;
   font-family: 'Montserrat';
 }
@@ -23,7 +23,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -39,11 +39,17 @@ body {
 }
 
 #app-list {
-  height: 100px;
-  width: 350px;
+  padding: 0 50px;
+  width: 100%;
+  height: 200px;
   margin: 1em 0;
   overflow-x: scroll;
   overflow-y: scroll;
+  list-style-type: none;
+}
+
+.app-item {
+  /* text-decoration: none; */
 }
 
 #app-list::-webkit-scrollbar {
@@ -85,18 +91,20 @@ body {
 /* } */
 
 .control-row {
-  width: 80%;
+  width: 100%;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #66cc90;
 }
 
 .btn {
-  background: #13aa52;
+  background: hsl(145, 80%, 37%);
   border: 2px solid transparent;
   border-radius: 5px;
-  box-shadow: 0 3px 0 #2c662e;
+  box-shadow: 0 3px 0 hsl(145, 80%, 24%);
   box-sizing: border-box;
   color: white;
   cursor: pointer;
@@ -119,11 +127,11 @@ body {
 }
 
 .btn:hover {
-  background: #15c25d;
+  background: hsl(145, 80%, 40%);
 }
 
 .btn:active, .btn:focus {
-  background: #0f8c43;
+  background: hsl(145, 80%, 32%);
 }
 
 .press-me:focus {
@@ -144,10 +152,14 @@ body {
   background: #1a79d9;
 }
 
-.start {
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(145, 80%, 29%);
+  border-radius: 50%;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
 }
 
 #previous, #next, #save {
@@ -156,9 +168,9 @@ body {
 }
 
 #start {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  position: relative;
+  width: 30px;
+  height: 30px;
 }
 
 #previous, #next, #save, #start {

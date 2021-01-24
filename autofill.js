@@ -55,7 +55,7 @@ function autofillForms(options, gender, race) {
             input.value = options['hear-about'];
           } else if (text.match(/pronouns/i)) {
             input.value = options['pronouns'];
-          } else if (gender === 'male' && text.match(/male|man/i)) {
+          } else if (gender === 'male' && text.match(/\b(male|man)/i)) {
             input.checked = true;
           } else if (gender === 'female' && text.match(/female|woman/i)) {
             input.checked = true;

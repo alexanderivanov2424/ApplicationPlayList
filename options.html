@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="options.css">
     </head>
     <body>
-      <!--CSS taken from https://uicookies.com/beautiful-css-forms/  Reg Form v15 -->
+      <!--Some HTML taken from https://colorlib.com -->
       <div class="main">
           <div class="container">
               <div class="signup-content">
@@ -37,22 +37,40 @@
                                   <span class="check"></span>
                               </div>
                               <div class="form-radio-item">
+                                  <input type="radio" name="gender" id="non-binary">
+                                  <label for="non-binary">Non-Binary</label>
+                                  <span class="check"></span>
+                              </div>
+                              <div class="form-radio-item">
                                   <input type="radio" name="gender" id="other">
                                   <label for="other">Other</label>
                                   <span class="check"></span>
                               </div>
+                              <div class="form-radio-item">
+                                  <input type="radio" name="gender" id="no-say">
+                                  <label for="no-say">Don't wish to answer</label>
+                                  <span class="check"></span>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="self-desc">Self Describe :</label>
+                              <input type="text" name="self-desc" id="self-desc"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="pronouns">Pronouns :</label>
+                              <input type="text" name="pronouns" id="pronouns"/>
                           </div>
                           <div class="form-group">
                               <label for="email">Email :</label>
-                              <input type="text" name="email" id="email"/>
+                              <input type="email" name="email" id="email"/>
                           </div>
                           <div class="form-group">
                               <label for="website">Website:</label>
-                              <input type="email" name="website" id="website" />
+                              <input type="text" name="website" id="website" />
                           </div>
                           <div class="form-group">
                               <label for="linkedin">Linkedin:</label>
-                              <input type="email" name="linkedin" id="linkedin" />
+                              <input type="text" name="linkedin" id="linkedin" />
                           </div>
                           <div class="form-group">
                               <label for="phone-num">Phone Number :</label>
@@ -83,6 +101,10 @@
                           <div class="form-group">
                               <label for="birth-date">DOB :</label>
                               <input type="text" name="birth-date" id="birth-date">
+                          </div>
+                          <div class="form-group">
+                              <label for="hear-about">Hear About Job Default :</label>
+                              <input type="text" name="hear-about" id="hear-about"/>
                           </div>
                           <div class="form-group">
                               <label for="education">Education :</label>

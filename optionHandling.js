@@ -2,7 +2,7 @@ import { set, get } from "./utils.js";
 
 const FIELDS = ["fname","lname", "email", "website", "linkedin",
   "phone-num", "address", "zipcode", "country", "state", "birth-date",
-  "education", "major"];
+  "education", "major", "hear-about", "pronouns"];
 
 async function saveOptions() {
   const options = {};
@@ -20,7 +20,9 @@ export async function getOptions() {
 async function loadOptions() {
   const { options } = await get("options");
   for (const key of FIELDS) {
-    document.getElementById(key).value = options[key];
+    if(options[key]){
+      document.getElementById(key).value = options[key];
+    }
   }
 }
 

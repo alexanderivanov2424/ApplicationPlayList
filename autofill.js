@@ -16,17 +16,13 @@ function fillElementsWith(items) {
   }
 }
 
-["fname","lname", "email", "website", "linkedin",
-  "phone-num", "address", "zipcode", "country", "state", "city", "birth-date",
-  "education", "major"];
-
 function autofillForms(options) {
   for (const form of document.forms) {
     for (const input of form.elements) {
       const labels = input.labels;
       if (labels) {
         for (const label of labels) {
-          const text = label.innerHTML;
+          const text = label.innerText;
           if (text.match(/first name/i)) {
             input.value = options['fname'];
           } else if (text.match(/last name/i)) {
@@ -51,6 +47,14 @@ function autofillForms(options) {
             input.value = options['state'];
           } else if (text.match(/city/i)) {
             input.value = options['city'];
+          } else if (text.match(/university/i)) {
+            input.value = options['education'];
+          } else if (text.match(/education/i)) {
+            input.value = options['education'];
+          } else if (text.match(/this job/i)) {
+            input.value = options['hear-about'];
+          } else if (text.match(/pronouns/i)) {
+            input.value = options['pronouns'];
           }
         }
       }

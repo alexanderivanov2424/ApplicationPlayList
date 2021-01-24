@@ -1,5 +1,4 @@
-/*CSS taken from https://uicookies.com/beautiful-css-forms/ */
-/* Reg Form v15 */
+/*CSS taken from https://colorlib.com */
 
 /* @extend display-flex; */
 display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-icon i {
@@ -263,7 +262,7 @@ body {
   background: #fff; }
 
 .signup-img, .signup-form {
-  width: 50%; }
+  width: 80%; }
 
 .signup-img {
   margin-bottom: -7px; }

@@ -2,17 +2,26 @@
 <html>
     <head>
         <title>Application Playlist</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
         <script type="module" src="popup.js"></script>
         <script type="module" src="onload.js"></script>
         <!-- <script type="module" src="autofill.js"></script> -->
     </head>
     <body>
-        <h1 id="index"> 0 </h1>
-        <button id="clear">clear</button>
-        <button id="save">save current</button>
-        <button id="start">start</button>
-        <button id="autofill">autofill</button>
-        <div id="left"> <button id="previous"> &lt; &lt; </button> </div>
-        <div id="right"> <button id="next"> &gt; &gt; </button> </div>
+        <div class="container">
+            <div class="app-row">
+				        <ul id="app-list"></ul>
+            </div>
+            <!-- <button id="clear">clear</button> -->
+            <div class="autofill-row">
+                <button id="autofill">Autofill</button>
+                <img id="save" src="media/save.svg"></img>
+            </div>
+            <div class="control-row">
+                <div id="left"> <img id="previous" src="media/prevArrow.svg"></img> </div>
+                <div id="center"> <img id="start" src="media/start.svg"></img> </div>
+                <div id="right"> <img id="next" src="media/nextArrow.svg"></img> </div>
+            </div>
+        </div>
     </body>
 </html>

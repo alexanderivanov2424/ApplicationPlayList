@@ -107,12 +107,22 @@ async function sendAutofillMessage() {
 
 
 async function removeCurrentApp(){
+    let { currIdx } = await get(['currIdx']);
+    const { apps = [] } = await get(['apps']);
+    apps.splice(currIdx,1);
+    await set({ apps });
 
+    const currLength = (await getAllApps()).length;
+    currIdx = currIdx >= currLength ? currLength - 1 : currIdx;
+    await set({ currIdx });
+
+    await loadApp(currIdx);
 }
 
 
 async function scrollAppList(){
-
+    const appList = document.getElementById('autofill')
+    console.log(appList.scrollTop)
 }
 
 async function togglePlayPause() {
@@ -143,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('autofill').addEventListener('click', sendAutofillMessage);
   document.getElementById('done').addEventListener('click', removeCurrentApp);
 
-  document.getElementById('autofill').addEventListener("scroll", scrollAppList);
+  // document.getElementById('app-list').addEventListener("scroll", scrollAppList);
 
   const { apps = [], currIdx } = await get(['apps', 'currIdx']);
   renderAppList(apps, currIdx);

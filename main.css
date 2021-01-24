@@ -28,14 +28,33 @@ body {
 }
 
 .app-row {
+  top: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position : relative;
 }
 
+.app-row:after {
+  content  : "";
+  position : absolute;
+  z-index  : 1;
+  top: 5px;
+  right: 13px;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+                rgba(255,255,255,1),
+                rgba(255,255,255,0) 10%,
+                rgba(255,255,255,0) 80%,
+                rgba(255,255,255,1) 100%);
+  width: 98%;
+  height: 90%;
+}
+
+
 .app-list-element{
-  margin: 8px 0;
+  margin: 5px 0;
 }
 
 #app-list {

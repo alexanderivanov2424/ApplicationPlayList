@@ -3,6 +3,7 @@
 
 	"name": "Application Playlist",
 	"description": "Quick and easy way to manage and grind through your applications",
+	"default_icon": "icon.png",
 	"version": "1.0",
 
 	"browser_action": {

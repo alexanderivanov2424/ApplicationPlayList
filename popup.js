@@ -91,6 +91,10 @@ function renderAppList(appUrls, currIdx) {
 	for (let i=0; i < appUrls.length; i++) {
 	  const appItem = document.createElement('li');
 	  appItem.innerHTML = appUrls[i];
+    appItem.addEventListener('click', async () => {
+      await set({ currIdx: i });
+      await loadApp(i);
+    });
     if (i == currIdx) {
       appItem.classList.add("highlight");
     }

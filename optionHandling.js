@@ -1,30 +1,29 @@
-import {set, get} from "./storageUtils.js";
+import { set, get } from "./utils.js";
 
-const FIELDS = ["fname","lname"]
+const FIELDS = ["fname","lname"];
 
-async function saveOptions(){
-  let options = {}
-  for(const key of FIELDS){
-    options[key] = document.getElementById(key).value
+async function saveOptions() {
+  const options = {};
+  for (const key of FIELDS) {
+    options[key] = document.getElementById(key).value;
   }
-  console.log(options);
-  await set({"options": options});
+  await set({ options });
 }
 
-export async function getOptions(){
-  return (await get("options"))["options"];
+export async function getOptions() {
+  const { options } = await get("options");
+  return options;
 }
 
-async function loadOptions(){
-  const options = (await get("options"))["options"];
-  console.log(options);
-  for(const key of FIELDS){
-    document.getElementById(key).value = options[key]
+async function loadOptions() {
+  const { options } = await get("options");
+  for (const key of FIELDS) {
+    document.getElementById(key).value = options[key];
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('save_opp').addEventListener('click', saveOptions);
+  document.getElementById('save-options').addEventListener('click', saveOptions);
 });
 
 window.onload = loadOptions;

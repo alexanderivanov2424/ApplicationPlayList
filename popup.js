@@ -1,9 +1,7 @@
-import {set, get, query, update} from "./utils.js";
+import { set, get, query, update } from "./utils.js";
 
 async function clear() {
-  //return new Promise(resolve => chrome.storage.local.clear(resolve));
-  // await set({ currIdx: -1, apps: [] });
-  await set({ currIdx: 0, apps: ["https://www.mongodb.com/careers/jobs/2427532"] });
+  await set({ currIdx: -1, apps: [] });
 }
 
 // Functions related to apps
@@ -68,20 +66,20 @@ export async function nextApp() {
   await loadApp(currIdx);
 }
 
-export async function displayIdx(){
-  let { currIdx } = await get(['currIdx']);
-  document.getElementById('index')
-}
-
 export async function start() {
   //await loadApp(0);
 }
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
-  if('currIdx' in changes){
-    document.getElementById('index').innerHTML = changes['currIdx'].newValue
+chrome.storage.onChanged.addListener(changes => {
+  if ('currIdx' in changes) {
+    document.getElementById('index').innerHTML = changes['currIdx'].newValue;
   }
 });
+
+async function sendAutofillMessage() {
+  const [tab] = await query({ active: true, currentWindow: true });
+  chrome.tabs.sendMessage(tab.id, 'autofill');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('clear').addEventListener('click', clear);
@@ -89,4 +87,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('start').addEventListener('click', loadCurrApp);
   document.getElementById('previous').addEventListener('click', prevApp);
   document.getElementById('next').addEventListener('click', nextApp);
+  document.getElementById('autofill').addEventListener('click', sendAutofillMessage);
 });

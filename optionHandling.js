@@ -11,6 +11,10 @@ async function saveOptions(){
   await set({"options": options});
 }
 
+export async function getOptions(){
+  return (await get("options"))["options"];
+}
+
 async function loadOptions(){
   const options = (await get("options"))["options"];
   console.log(options);

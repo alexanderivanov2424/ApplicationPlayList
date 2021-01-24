@@ -1,17 +1,9 @@
-import {set, get} from "./storageUtils.js";
+import {set, get, query, update} from "./utils.js";
 
 async function clear() {
   //return new Promise(resolve => chrome.storage.local.clear(resolve));
   // await set({ currIdx: -1, apps: [] });
   await set({ currIdx: 0, apps: ["https://www.mongodb.com/careers/jobs/2427532"] });
-}
-
-function query(queryInfo) {
-  return new Promise(resolve => chrome.tabs.query(queryInfo, resolve));
-}
-
-function update(updateProperties) {
-  return new Promise(resolve => chrome.tabs.update(updateProperties, resolve));
 }
 
 // Functions related to apps
